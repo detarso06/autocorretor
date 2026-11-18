@@ -1,0 +1,45 @@
+# Onde o corretor fica quieto. Um item por linha:
+#   nome do .exe            -> o programa inteiro (ex.: idea64.exe)
+#   titulo: um texto        -> qualquer janela ou aba cujo título contenha o texto (ex.: sites)
+# Atalho: Win+Ctrl+I com o programa em foco põe ou tira ele desta lista.
+# Depois de editar à mão, use "Recarregar listas" no ícone da bandeja.
+
+# Terminais (comandos não são texto)
+windowsterminal.exe
+cmd.exe
+powershell.exe
+pwsh.exe
+conhost.exe
+mintty.exe
+
+# Gerenciadores de senha
+keepass.exe
+keepassxc.exe
+1password.exe
+bitwarden.exe
+
+# Editores de código e IDEs
+code.exe
+code - insiders.exe
+cursor.exe
+idea64.exe
+pycharm64.exe
+webstorm64.exe
+datagrip64.exe
+studio64.exe
+devenv.exe
+sublime_text.exe
+notepad++.exe
+
+# Banco de dados
+pgadmin4.exe
+mysqlworkbench.exe
+dbeaver.exe
+ssms.exe
+azuredatastudio.exe
+heidisql.exe
+
+# Sites de banco de dados (pelo título da aba)
+titulo: supabase
+titulo: pgadmin
+titulo: phpmyadmin

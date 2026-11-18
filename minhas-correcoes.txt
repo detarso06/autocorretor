@@ -1,0 +1,27 @@
+# Trocas fixas: errado=certo, uma por linha. Valem antes de qualquer outra regra e podem virar
+# mais de uma palavra. Depois de editar, use "Recarregar listas" no ícone da bandeja.
+concerteza=com certeza
+derrepente=de repente
+porisso=por isso
+apartir=a partir
+excessão=exceção
+excessões=exceções
+mecher=mexer
+mecheu=mexeu
+mechendo=mexendo
+menas=menos
+seje=seja
+esteje=esteja
+impecilho=empecilho
+previlégio=privilégio
+beneficiente=beneficente
+ancioso=ansioso
+anciosa=ansiosa
+atravéz=através
+atraz=atrás
+talvés=talvez
+paralização=paralisação
+análize=análise
+quizer=quiser
+quiz=quis
+pobrema=problema

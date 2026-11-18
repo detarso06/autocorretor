@@ -1,0 +1,64 @@
+# Casos do teste simulado (powershell -File testes\rodar-testes.ps1)
+# programa | título da janela | senha (0 ou 1) | "teclas" | "texto esperado"
+# Nas teclas: {BS} = Backspace, {ESQ} = seta para a esquerda, {ENTER} = Enter, {TAB} = Tab,
+# {CLIQUE} = clique do mouse, {JAN1}...{JAN9} = passa a digitar em outra janela ({JAN0} volta).
+# Cada caso começa numa janela em que ainda não se digitou (por isso a primeira palavra ganha maiúscula).
+
+# --- corrige o português, em programa comum ---
+chrome.exe | Gmail - Google Chrome | 0 | "nao sei se voce esta querewndo a reuniao. Nao " | "Não sei se você esta querendo a reunião. Não "
+chrome.exe | Gmail - Google Chrome | 0 | "possivel, facil! (nao) "voce" " | "Possível, fácil! (não) "você" "
+chrome.exe | Gmail - Google Chrome | 0 | "concerteza voce vem, interresante " | "Com certeza você vem, interessante "
+discord.exe | Discord | 0 | "nao sei, voce sabe? " | "Não sei, você sabe? "
+
+# --- não mexe em inglês, nomes, siglas, e-mails, links, arquivos ---
+chrome.exe | Gmail - Google Chrome | 0 | "the meeting so ate because i don't know " | "The meeting so ate because i don't know "
+chrome.exe | Gmail - Google Chrome | 0 | "site.com usuario@email.com arquivo.txt relatorio.pdf reuniao.com localhost:8080 " | "site.com usuario@email.com arquivo.txt relatorio.pdf reuniao.com localhost:8080 "
+chrome.exe | Gmail - Google Chrome | 0 | "Paulo nao veio. Voce vem? CNPJ iPhone GitHub " | "Paulo não veio. Você vem? CNPJ iPhone GitHub "
+chrome.exe | Gmail - Google Chrome | 0 | "falei com Marcela ontem, segunda-feira " | "Falei com Marcela ontem, segunda-feira "
+chrome.exe | Gmail - Google Chrome | 0 | "abc123nao voce " | "abc123nao você "
+
+# --- maiúscula depois de ponto final (só ponto: não depois de ! ou ?) ---
+chrome.exe | Gmail - Google Chrome | 0 | "fim. depois eu vejo! ok? sim " | "Fim. Depois eu vejo! ok? sim "
+chrome.exe | Gmail - Google Chrome | 0 | "pronto. nao sei, voce sabe. e ai " | "Pronto. Não sei, você sabe. E ai "
+chrome.exe | Gmail - Google Chrome | 0 | "ele disse. "nao sei" e saiu. (talvez) volte " | "Ele disse. "Não sei" e saiu. (Talvez) volte "
+chrome.exe | Gmail - Google Chrome | 0 | "pois é. agora vai. the end. it works " | "Pois é. Agora vai. The end. It works "
+# não é fim de frase: reticências, abreviação, número com ponto, link, nome com maiúscula no meio
+chrome.exe | Gmail - Google Chrome | 0 | "nao sei... talvez o sr. paulo, por ex. amanha " | "Não sei... talvez o sr. paulo, por ex. amanhã "
+chrome.exe | Gmail - Google Chrome | 0 | "custa 3.5 reais. veja em site.com. depois eu mando " | "Custa 3.5 reais. Veja em site.com. Depois eu mando "
+chrome.exe | Gmail - Google Chrome | 0 | "pronto. iPhone novo. site.com caiu. usuario@email.com avisou " | "Pronto. iPhone novo. site.com caiu. usuario@email.com avisou "
+
+# --- maiúscula no começo da digitação: janela nova, depois de Enter ou Tab ---
+chrome.exe | WhatsApp - Google Chrome | 0 | "oi tudo bem{ENTER}queria saber uma coisa{ENTER}" | "Oi tudo bem{ENTER}Queria saber uma coisa{ENTER}"
+chrome.exe | WhatsApp - Google Chrome | 0 | "fim.{ENTER}depois vem. ok{ENTER}" | "fim.{ENTER}Depois vem. ok{ENTER}"
+chrome.exe | Formulário - Google Chrome | 0 | "nome{TAB}paulo silva{TAB}rua das flores " | "nome{TAB}Paulo silva{TAB}Rua das flores "
+# Enter que só aceita uma sugestão (menção, emoji) não começa frase
+discord.exe | Discord | 0 | "oi @joao{ENTER}voce viu :sorriso{ENTER}isso " | "Oi @joao{ENTER}você viu :sorriso{ENTER}isso "
+# clicar antes de escrever continua sendo começo; clicar ou andar com a seta no meio do texto, não
+chrome.exe | WhatsApp - Google Chrome | 0 | "{CLIQUE}oi tudo {CLIQUE}bem aqui. {CLIQUE}depois " | "Oi tudo bem aqui. depois "
+chrome.exe | Gmail - Google Chrome | 0 | "{ESQ}nao sei " | "não sei "
+# voltar para uma janela: continua de onde parou (no meio da frase, ou logo depois do Enter)
+chrome.exe | Gmail - Google Chrome | 0 | "oi tudo {JAN1}la longe {JAN0}bem aqui{ENTER}{JAN1}demais {JAN0}novo dia " | "Oi tudo La longe bem aqui{ENTER}demais Novo dia "
+
+# --- Backspace: desfaz a troca (correção ou maiúscula) ---
+chrome.exe | Gmail - Google Chrome | 0 | "tambem {BS}tambem fim " | "tambem tambem fim "
+chrome.exe | Gmail - Google Chrome | 0 | "voce. {BS}" | "voce. "
+chrome.exe | Gmail - Google Chrome | 0 | "fim. isso {BS}" | "Fim. isso "
+chrome.exe | Gmail - Google Chrome | 0 | "naoo{BS} " | "Não "
+chrome.exe | Gmail - Google Chrome | 0 | "nao.{BS} sei " | "Não sei "
+# apagar e redigitar a palavra não perde o começo de frase
+chrome.exe | Gmail - Google Chrome | 0 | "fim. dpe{BS}{BS}epois vem " | "Fim. Depois vem "
+chrome.exe | Gmail - Google Chrome | 0 | "fim. d{BS}agora vai " | "Fim. Agora vai "
+
+# --- Enter e setas: não corrige o que ficou para trás ---
+chrome.exe | Gmail - Google Chrome | 0 | "nao{ENTER}voce{ENTER}" | "nao{ENTER}voce{ENTER}"
+chrome.exe | Gmail - Google Chrome | 0 | "nao{ESQ} voce " | "nao você "
+
+# --- onde o corretor fica quieto: programas da lista, título da aba, campo de senha ---
+code.exe | autocorretor.ahk - Visual Studio Code | 0 | "nao voce usuario querewndo. nao " | "nao voce usuario querewndo. nao "
+idea64.exe | meu-projeto - Main.java | 0 | "usuario nao codigo. reuniao " | "usuario nao codigo. reuniao "
+pgadmin4.exe | pgAdmin 4 | 0 | "select usuario from reuniao where codigo " | "select usuario from reuniao where codigo "
+mysqlworkbench.exe | MySQL Workbench | 0 | "select usuario from reuniao where codigo " | "select usuario from reuniao where codigo "
+windowsterminal.exe | Windows PowerShell | 0 | "git commit nao voce " | "git commit nao voce "
+chrome.exe | SQL Editor - Supabase - Google Chrome | 0 | "select usuario from reuniao. depois " | "select usuario from reuniao. depois "
+chrome.exe | WhatsApp - Google Chrome | 0 | "select usuario from reuniao " | "Select usuário from reunião "
+chrome.exe | Entrar - Google Chrome | 1 | "nao voce, fim. depois " | "nao voce, fim. depois "

@@ -1,0 +1,9 @@
+# Listas de terceiros e dicionários gerados: "python montar_dicionarios.py" baixa e monta
+fontes/
+dados/
+__pycache__/
+
+# Saídas dos testes
+testes/*saida*.txt
+testes/erro*.txt
+testes/e2e-passos.txt

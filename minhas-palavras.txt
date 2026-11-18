@@ -1,0 +1,30 @@
+# Palavras que o corretor nunca deve mexer: uma por linha, em minúsculas.
+# Depois de editar, use "Recarregar" no ícone da bandeja (não precisa remontar os dicionários).
+frontend
+backend
+fullstack
+popup
+github
+gitlab
+claude
+whatsapp
+supabase
+expo
+webapp
+checkin
+login
+logout
+deploy
+commit
+merge
+branch
+hub
+admin
+app
+api
+pr
+prs
+dev
+devs
+os
+figma
