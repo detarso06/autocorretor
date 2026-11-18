@@ -5,8 +5,9 @@
 ;   2. se existe em português ou inglês (validas.txt), não mexe;
 ;   3. senão, troca pela palavra portuguesa mais usada a um erro de distância ("querewndo" ->
 ;      "querendo") ou, em palavras longas, a dois ("interresante" -> "interessante").
-; A palavra que começa uma frase (depois de . ! ? e espaço ou Enter) ganha a primeira letra
-; maiúscula. Backspace logo depois de uma troca devolve o que foi digitado; se era uma
+; A primeira letra fica maiúscula depois de fim de frase (. ! ?) e quando a pessoa começa a
+; digitar (depois de Enter ou Tab, ou ao chegar numa janela em que não estava no meio de um
+; texto). Backspace logo depois de uma troca devolve o que foi digitado; se era uma
 ; correção, a palavra não é mais corrigida até o programa fechar. Não mexe em campo de senha,
 ; nos programas de programas-ignorados.txt, nem em e-mails, links, nomes de arquivo, siglas e
 ; nomes próprios. Nada do que é digitado vai para arquivo.
@@ -30,11 +31,11 @@ global SIM := 0                  ; no teste simulado: { texto, exe, titulo, senh
 global buf := "", sujo := false, aposPonto := false, inicioDeFrase := true
 global pendente := 0             ; palavra seguida de "." ou ":" esperando a próxima tecla
 ; Maiúscula no começo. `proxima` diz se a próxima palavra começa uma frase, e por quê:
-;   "ponto"  = veio um ponto final e depois um espaço;
+;   "ponto"  = veio um fim de frase (. ! ?) e depois um espaço;
 ;   "comeco" = a pessoa está começando a digitar (depois de Enter ou Tab, ou ao chegar numa
 ;              janela em que não estava no meio de um texto);
 ;   ""       = não, ou não se sabe (o programa não enxerga o que já está escrito no campo).
-; fimVisto: acabou de vir um ponto final, falta o espaço. pontos: pontos seguidos (reticências
+; fimVisto: acabou de vir um fim de frase, falta o espaço. pontos: pontos seguidos (reticências
 ; não encerram a frase). iniciaFrase: a palavra em andamento começou com `proxima` ligado.
 ; ESTADOS guarda o `proxima` de cada janela, para voltar a ela sem perder o fio.
 global proxima := "", fimVisto := false, pontos := 0, iniciaFrase := false, ESTADOS := Map()
@@ -461,8 +462,11 @@ AoDigitar(hook, texto) {
             buf := "", iniciaFrase := false, proxima := ""
             if palavra != "" && !sujo
                 Trocar(palavra, c, inicioDeFrase, comecaFrase)
-            ; Fecha parênteses logo depois do ponto, "(isso.) Depois": o ponto continua valendo.
-            if !(c = ")" && palavra = "" && fimVisto)
+            ; ! e ? também encerram a frase. Fecha parênteses logo depois do fim, "(isso.) Depois":
+            ; o fim continua valendo.
+            if c = "!" || c = "?"
+                fimVisto := true
+            else if !(c = ")" && palavra = "" && fimVisto)
                 fimVisto := false
             inicioDeFrase := InStr("!?", c) ? true : (palavra != "" ? false : inicioDeFrase)
         } else if c = "(" || c = '"' {

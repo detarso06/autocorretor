@@ -6,7 +6,7 @@
 
 # --- corrige o português, em programa comum ---
 chrome.exe | Gmail - Google Chrome | 0 | "nao sei se voce esta querewndo a reuniao. Nao " | "Não sei se você esta querendo a reunião. Não "
-chrome.exe | Gmail - Google Chrome | 0 | "possivel, facil! (nao) "voce" " | "Possível, fácil! (não) "você" "
+chrome.exe | Gmail - Google Chrome | 0 | "possivel, facil! (nao) "voce" " | "Possível, fácil! (Não) "você" "
 chrome.exe | Gmail - Google Chrome | 0 | "concerteza voce vem, interresante " | "Com certeza você vem, interessante "
 discord.exe | Discord | 0 | "nao sei, voce sabe? " | "Não sei, você sabe? "
 
@@ -17,8 +17,10 @@ chrome.exe | Gmail - Google Chrome | 0 | "Paulo nao veio. Voce vem? CNPJ iPhone 
 chrome.exe | Gmail - Google Chrome | 0 | "falei com Marcela ontem, segunda-feira " | "Falei com Marcela ontem, segunda-feira "
 chrome.exe | Gmail - Google Chrome | 0 | "abc123nao voce " | "abc123nao você "
 
-# --- maiúscula depois de ponto final (só ponto: não depois de ! ou ?) ---
-chrome.exe | Gmail - Google Chrome | 0 | "fim. depois eu vejo! ok? sim " | "Fim. Depois eu vejo! ok? sim "
+# --- maiúscula depois de fim de frase: ponto final, ! e ? ---
+chrome.exe | Gmail - Google Chrome | 0 | "fim. depois eu vejo! ok? sim " | "Fim. Depois eu vejo! Ok? Sim "
+chrome.exe | Gmail - Google Chrome | 0 | "ola. tudo bem? nao... sei " | "Olá. Tudo bem? Não... sei "
+chrome.exe | Gmail - Google Chrome | 0 | "site.com/busca?q=nao deu certo! verdade?! sim " | "site.com/busca?q=nao deu certo! Verdade?! Sim "
 chrome.exe | Gmail - Google Chrome | 0 | "pronto. nao sei, voce sabe. e ai " | "Pronto. Não sei, você sabe. E ai "
 chrome.exe | Gmail - Google Chrome | 0 | "ele disse. "nao sei" e saiu. (talvez) volte " | "Ele disse. "Não sei" e saiu. (Talvez) volte "
 chrome.exe | Gmail - Google Chrome | 0 | "pois é. agora vai. the end. it works " | "Pois é. Agora vai. The end. It works "

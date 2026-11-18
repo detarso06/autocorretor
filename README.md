@@ -41,8 +41,8 @@ Ao terminar uma palavra com espaço ou pontuação:
 
 E põe **maiúscula na primeira letra** em dois casos:
 
-- **Depois de ponto final** ("fim. depois" → "fim. Depois"). Reticências, abreviações ("sr.",
-  "ex.") e números ("3.5") não contam como fim de frase.
+- **Depois de fim de frase:** ponto final, `!` ou `?` ("fim. depois" → "fim. Depois").
+  Reticências, abreviações ("sr.", "ex.") e números ("3.5") não contam como fim de frase.
 - **Quando você começa a digitar:** depois de Enter ou Tab, ou ao chegar numa janela em que não
   estava no meio de um texto.
 
@@ -114,3 +114,8 @@ não fazem parte deste repositório e são baixadas na montagem. Cada uma tem a 
   palavras em legendas do OpenSubtitles (português e inglês). Conteúdo em CC BY-SA 4.0.
 - [english-words](https://github.com/dwyl/english-words), da dwyl: lista de palavras do inglês.
   Unlicense.
+
+## Licença
+
+O código deste repositório está sob a licença [MIT](LICENSE). Ela não cobre as listas de
+palavras acima, que seguem as licenças de cada projeto.
